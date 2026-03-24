@@ -19,7 +19,7 @@ app.use(express.static(path.join(__dirname, '../frontend')));
 app.use('/api/trips', tripRoutes);
 
 // Database connection
-const mongoURI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/tripsplit';
+const mongoURI = process.env.MONGODB_URI || 'mongodb+srv://marcelloarun:12345@cluster0.qbczhht.mongodb.net/?appName=Cluster0';
 
 mongoose.connect(mongoURI, {
   useNewUrlParser: true,
