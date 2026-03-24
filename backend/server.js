@@ -12,24 +12,25 @@ app.use(cors());
 app.use(express.json({ limit: '50mb' })); // to handle base64 images
 app.use(express.urlencoded({ extended: true }));
 
-// Serve static frontend
+// Serve static frontend (adjust path if your frontend is in a different location)
 app.use(express.static(path.join(__dirname, '../frontend')));
 
 // API Routes
 app.use('/api/trips', tripRoutes);
 
 // Connect to MongoDB
+// If you use MongoDB Atlas, replace the connection string with your own.
 mongoose.connect('mongodb://127.0.0.1:27017/tripsplit', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
 .then(() => {
-  console.log('MongoDB connected');
+  console.log('✅ MongoDB connected');
   app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
+    console.log(`🚀 Server running on http://localhost:${PORT}`);
   });
 })
 .catch(err => {
-  console.error('MongoDB connection error:', err);
+  console.error('❌ MongoDB connection error:', err);
   process.exit(1);
 });

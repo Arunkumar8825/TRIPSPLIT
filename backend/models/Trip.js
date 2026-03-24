@@ -14,7 +14,7 @@ const expenseSchema = new mongoose.Schema({
 
 const photoSchema = new mongoose.Schema({
   id: { type: Number, required: true },
-  base64: { type: String, required: true }, // store base64 string
+  base64: { type: String, required: true },
 });
 
 const tripSchema = new mongoose.Schema({

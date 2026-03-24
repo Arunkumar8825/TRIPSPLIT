@@ -1,16 +1,16 @@
 const Trip = require('../models/Trip');
 
-// Get all trips
+// Get all trips (exclude large photo base64 for list)
 exports.getAllTrips = async (req, res) => {
   try {
-    const trips = await Trip.find().select('-photos.base64'); // exclude large photo data for list
+    const trips = await Trip.find().select('-photos.base64');
     res.json(trips);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 };
 
-// Get single trip by ID
+// Get single trip by ID (include all data)
 exports.getTripById = async (req, res) => {
   try {
     const trip = await Trip.findById(req.params.id);
@@ -107,6 +107,11 @@ exports.addExpense = async (req, res) => {
     const { name, paidById, amount } = req.body;
     const trip = await Trip.findById(req.params.id);
     if (!trip) return res.status(404).json({ error: 'Trip not found' });
+
+    // Ensure paidById exists
+    if (!trip.members.some(m => m.id === paidById)) {
+      return res.status(400).json({ error: 'Payer not a member' });
+    }
 
     const newId = trip.nextExpenseId++;
     trip.expenses.push({ id: newId, name, paidById, amount });
