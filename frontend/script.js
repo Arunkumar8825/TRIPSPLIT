@@ -1,4 +1,4 @@
-const API_BASE = "https://tripsplit-6.onrender.com/api";
+const API_BASE = "https://tripsplit-7.onrender.com/api";
 
 let currentTripId = null;
 
