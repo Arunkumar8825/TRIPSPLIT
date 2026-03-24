@@ -1,5 +1,5 @@
 // API Base URL
-const API_BASE = '/api';
+const API_BASE ='https://tripsplit1.onrender.com/api';
 let currentTripId = null;
 
 // Helper: fetch with error handling
