@@ -1,6 +1,6 @@
 const Trip = require('../models/Trip');
 
-// Get all trips (exclude large photo base64 for list)
+// Get all trips (exclude large photo data for list)
 exports.getAllTrips = async (req, res) => {
   try {
     const trips = await Trip.find().select('-photos.base64');
@@ -10,7 +10,7 @@ exports.getAllTrips = async (req, res) => {
   }
 };
 
-// Get single trip by ID (include all data)
+// Get single trip by ID
 exports.getTripById = async (req, res) => {
   try {
     const trip = await Trip.findById(req.params.id);
@@ -69,7 +69,7 @@ exports.deleteTrip = async (req, res) => {
   }
 };
 
-// Add member to trip
+// Add member
 exports.addMember = async (req, res) => {
   try {
     const { name } = req.body;
@@ -85,7 +85,7 @@ exports.addMember = async (req, res) => {
   }
 };
 
-// Remove member from trip (also remove their expenses)
+// Delete member (also removes their expenses)
 exports.deleteMember = async (req, res) => {
   try {
     const trip = await Trip.findById(req.params.id);
