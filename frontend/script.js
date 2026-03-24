@@ -1,7 +1,4 @@
-// API Base URL – change this when deploying
-
-const API_URL = "https://tripsplit-6.onrender.com/api/trips";
-// const API_BASE = 'https://tripsplit1.onrender.com/api'; // for production
+const API_BASE = "https://tripsplit-6.onrender.com/api";
 
 let currentTripId = null;
 
@@ -23,7 +20,8 @@ async function apiFetch(url, options = {}) {
 
 // --------------------- TRIP LIST -------------------------
 async function loadTrips() {
-  const trips = await apiFetch(`${API_BASE}`);
+  // Mela API_BASE-la /api mattum irundha, inga /trips serkkanum
+  const trips = await apiFetch(`${API_BASE}/trips`); 
   renderTripList(trips);
 }
 
