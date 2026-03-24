@@ -1,5 +1,8 @@
-// API Base URL
-const API_BASE = "https://tripsplit-3.onrender.com/api/trips";
+// API Base URL – change this when deploying
+
+const API_URL = "https://tripsplit-6.onrender.com/api/trips";
+// const API_BASE = 'https://tripsplit1.onrender.com/api'; // for production
+
 let currentTripId = null;
 
 // Helper: fetch with error handling
@@ -20,7 +23,7 @@ async function apiFetch(url, options = {}) {
 
 // --------------------- TRIP LIST -------------------------
 async function loadTrips() {
-  const trips = await apiFetch(`${API_BASE}/trips`);
+  const trips = await apiFetch(`${API_BASE}`);
   renderTripList(trips);
 }
 
@@ -263,7 +266,7 @@ async function handlePhotoUpload() {
   document.getElementById("photoInput").value = "";
 }
 
-// --------------------- CRUD actions (API calls) -------------------------
+// --------------------- CRUD actions -------------------------
 async function createNewTrip() {
   let tripName = prompt("Enter trip name:", "New Adventure");
   if (!tripName?.trim()) return;
@@ -326,7 +329,7 @@ async function editTripDate() {
   } else if (newDate) alert("Invalid date format. Use YYYY-MM-DD.");
 }
 
-// Export/Import using API data
+// Export/Import
 async function exportAllData() {
   const trips = await apiFetch(`${API_BASE}/trips`);
   const data = { trips };

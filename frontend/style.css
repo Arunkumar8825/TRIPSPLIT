@@ -95,7 +95,7 @@ button,
   justify-content: center;
   gap: 0.6rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  min-height: 44px; /* touch-friendly */
+  min-height: 44px;
 }
 
 button:hover,
